@@ -1,7 +1,7 @@
 (function()  {
 	
 	let d3Script = document.createElement('script');
-    d3Script.src = 'https://d3js.org/d3.v6.min.js';
+    d3Script.src = 'https://d3js.org/d3.v5.min.js';
     d3Script.async = false;
     document.head.appendChild(d3Script);
 	
