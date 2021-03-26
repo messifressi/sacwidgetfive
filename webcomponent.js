@@ -335,19 +335,19 @@ d3Script.onload = () =>
     var x = window._d3.scaleTime()
       .domain(window._d3.extent(data, function(d) { return d.date; }))
       .range([ 0, 50 ]);
-    window._d3.select(this._chartElem).append("g")
-      .attr("transform", "translate(0," + 15 + ")")
+    this._svgContainer.append("g")
+      .attr("transform", "translate(0,15)")
       .call(window._d3.axisBottom(x));
 
     // Add Y axis
     var y = window._d3.scaleLinear()
       .domain([0, window._d3.max(data, function(d) { return +d.value; })])
       .range([ 15, 0 ]);
-    window._d3.select(this._chartElem).append("g")
+    this._svgContainer.append("g")
       .call(window._d3.axisLeft(y));
 
     // Add the line
-    window._d3.select(this._chartElem).append("path")
+    this._svgContainer.append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "steelblue")
