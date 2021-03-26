@@ -321,6 +321,22 @@ d3Script.onload = () =>
 		.attr("height", this._widgetHeight);
 	    	}
 		
+		//y-axis
+		
+		var y = d3.scaleLinear()
+	      .range([ 15, 0 ]);
+	    var yaxis = this._svgContainer.append("g")
+	      .call(d3.axisLeft(y));
+		
+		//x-axis
+		var x = d3.scaleTime()
+	      .range([ 0, 50 ]);
+	    var yaxis = this._svgContainer.("g")
+	      .attr("transform", "translate(0,15)")
+	      .call(d3.axisBottom(x));
+		
+		
+		//line
 		
 		
 		this._ksOpenElem.innerHTML = this._ksOpen;
