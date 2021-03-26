@@ -121,22 +121,14 @@
          id="tagesauslastung"
          x="139.5"
          y="102.15625"
-         style="font-size:16px">Tagesauslastung</tspan></text>
+         style="font-size:16px">Tagesverlauf</tspan></text>
     <rect
-       style="opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-opacity:1"
-       id="rect1332"
-       width="120"
-       height="14.125"
+       y="115"
        x="140"
-       y="138" />
-    <path
-       id="path14"
-       d="m 140,130 v 30"
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-    <path
-       id="path16"
-       d="m 260,130 v 30"
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       height="55"
+       width="125"
+       id="chartBase"
+       style="fill:#d7e3f9;fill-opacity:1" />
   </g>
 </svg>
 
@@ -158,7 +150,7 @@
 			this._paxKumValElem = this._shadowRoot.querySelector('#paxKumVal');
 			this._ksOpenElem = this._shadowRoot.querySelector('#ksOpen');
 			this._tileHeaderElem = this._shadowRoot.querySelector('#ksText');
-			this._barElem = this._shadowRoot.querySelector('#rect1332');
+			this._chartElem = this._shadowRoot.querySelector('#chartBase');
 			this._tileHeaderElem.innerHTML = this._tileHeaderText;
 			this._paxKumVal = '0000';
 			this._ksOpen = 'status';
@@ -290,7 +282,6 @@
 	render(){
 		this._ksOpenElem.innerHTML = this._ksOpen;
 		this._paxKumValElem.innerHTML = this._paxKumVal;
-		this._barElem.setAttribute("width", this.getBarValue(this._paxKumVal));
 		console.log("render()");
 	}
     });
