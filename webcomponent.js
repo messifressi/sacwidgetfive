@@ -331,7 +331,7 @@ d3Script.onload = () =>
 		//x-axis
 		var x = d3.scaleTime()
 	      .range([ 0, 50 ]);
-	    var yaxis = this._svgContainer.("g")
+	    var yaxis = this._svgContainer.append("g")
 	      .attr("transform", "translate(0,15)")
 	      .call(d3.axisBottom(x));
 		
