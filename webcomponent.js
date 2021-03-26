@@ -176,7 +176,10 @@ d3Script.onload = () =>
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
             this._firstConnection = true;
-            this.redraw();
+	    const bcRect = this.getBoundingClientRect();
+            this._widgetHeight = bcRect.height;
+            this._widgetWidth = bcRect.width;
+            this.render();
 		console.log("connectedCallback");
         }
 
