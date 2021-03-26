@@ -1,4 +1,10 @@
 (function()  {
+	
+	let d3Script = document.createElement('script');
+    d3Script.src = 'https://d3js.org/d3.v6.min.js';
+    d3Script.async = false;
+    document.head.appendChild(d3Script);
+	
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -134,17 +140,23 @@
 
     `;
 	
-	
+d3Script.onload = () => 
 
     customElements.define('com-sap-sample-tilechart', class TileChart extends HTMLElement {
 
 
 		constructor() {
 			super(); 
+			
+			if (!window._d3){
+				window._d3 = d3;
+			    }
+			
 			this._shadowRoot = this.attachShadow({mode: "open"});
 			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 			this._firstConnection = false;
 			this._tagContainer;
+			this._svgContainer;
 			this._tagType = "h1";
 			this._tileHeaderText = "Kontrollspur N";
 			this._paxKumValElem = this._shadowRoot.querySelector('#paxKumVal');
@@ -207,11 +219,14 @@
         //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
         // Commented out by default.  If it is enabled, SAP Analytics Cloud will track DOM size changes and call this callback as needed
         //  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
-        /*
+        
         onCustomWidgetResize(width, height){
-            redraw()
+	    const bcRect = this.getBoundingClientRect();
+            this._widgetHeight = bcRect.height;
+            this._widgetWidth = bcRect.width;
+            this.render();
         }
-        */
+        
 		getBarValue(value){
 			var maxVal = 7800;
 			var percentage = value/maxVal*100;
@@ -280,6 +295,25 @@
         }
 			
 	render(){
+		if (this._widgetHeight < this._widgetWidth){
+                	this._widgetWidth = this._widgetHeight;
+		}
+
+	    	if (!this._svgContainer){
+		this._svgContainer = window._d3.select(this._shadowRoot)
+		.append("svg:svg")
+		.attr("id", "lineChart")
+		.attr("width", this._widgetWidth)
+		.attr("height", this._widgetWidth);
+	    	} else{
+		window._d3.select(this._shadowRoot).selectAll("*").remove();
+		this._svgContainer = window._d3.select(this._shadowRoot)
+		.append("svg:svg")
+		.attr("id", "lineChart")
+		.attr("width", this._widgetWidth)
+		.attr("height", this._widgetWidth);
+	    	}
+		
 		this._ksOpenElem.innerHTML = this._ksOpen;
 		this._paxKumValElem.innerHTML = this._paxKumVal;
 		console.log("render()");
