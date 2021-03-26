@@ -336,7 +336,7 @@ d3Script.onload = () =>
       .domain(window._d3.extent(data, function(d) { return d.date; }))
       .range([ 0, 50 ]);
     svg.append("g")
-      .attr("transform", "translate(0," + 15t + ")")
+      .attr("transform", "translate(0," + 15 + ")")
       .call(window._d3.axisBottom(x));
 
     // Add Y axis
