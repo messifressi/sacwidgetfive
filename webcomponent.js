@@ -179,6 +179,8 @@ d3Script.onload = () =>
 	    const bcRect = this.getBoundingClientRect();
             this._widgetHeight = bcRect.height;
             this._widgetWidth = bcRect.width;
+	    console.log(this._widgetHeight);
+	    console.log(this._widgetWidth);
             this.render();
 		console.log("connectedCallback");
         }
