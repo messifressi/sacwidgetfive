@@ -341,10 +341,10 @@ d3Script.onload = () =>
 		    .x(function(d) { return xScale(d.date); })
 		    .y(function(d) { return yScale(d.value); });
 		
-		data.forEach(function(d) {
+		/*data.forEach(function(d) {
 		      d.date = parseTime(d.date);
 		      d.value = +d.value;
-		  });
+		  }); */
 		
 		xScale.domain(window._d3.extent(data, function(d) { return d.date; }));
   		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
