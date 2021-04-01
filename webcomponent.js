@@ -332,6 +332,21 @@ d3Script.onload = () =>
 		
 		var parseTime = window._d3.timeParse("%d-%b-%y");
 		
+		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
+		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
+		
+		var valueline = d3.line()
+		    .x(function(d) { return x(d.date); })
+		    .y(function(d) { return y(d.value); });
+		
+		data.forEach(function(d) {
+		      d.date = parseTime(d.date);
+		      d.value = +d.value;
+		  });
+		
+		xScale.domain(window._d3.extent(data, function(d) { return d.date; }));
+  		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
+		
 		this._ksOpenElem.innerHTML = this._ksOpen;
 		this._paxKumValElem.innerHTML = this._paxKumVal;
 		console.log("render()");
