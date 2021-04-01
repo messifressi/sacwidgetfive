@@ -7,136 +7,7 @@
 	
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="ZeichnungWidget2.svg"
-   id="SVGRoot"
-   version="1.1"
-   viewBox="0 0 280.0 180.0"
-   height="180.0px"
-   width="280.0px">
-  <metadata
-     id="metadata24">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs22" />
-  <sodipodi:namedview
-     inkscape:current-layer="layer1"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-8"
-     inkscape:window-x="-8"
-     inkscape:cy="104.36537"
-     inkscape:cx="86.356726"
-     inkscape:zoom="2.9556977"
-     showgrid="true"
-     id="namedview20"
-     inkscape:window-height="1017"
-     inkscape:window-width="1920"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     guidetolerance="10"
-     gridtolerance="10"
-     objecttolerance="10"
-     borderopacity="1"
-     bordercolor="#666666"
-     pagecolor="#ffffff">
-    <inkscape:grid
-       id="grid849"
-       type="xygrid" />
-  </sodipodi:namedview>
-  <g
-     inkscape:label="Ebene 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:24px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.02012"
-       x="19.693363"
-       y="32.87323"
-       id="textHeader"><tspan
-         sodipodi:role="line"
-         id="ksText"
-         x="19.693363"
-         y="32.87323"
-         style="stroke-width:1">Kontrollspur X</tspan></text>
-    <text
-       transform="scale(1.0149042,0.98531463)"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:21.2239px;line-height:1.25;font-family:sans-serif;fill:#00b300;fill-opacity:1;stroke:none;stroke-width:1.02036"
-       x="25.463541"
-       y="60.572983"
-       id="textOpen"><tspan
-         sodipodi:role="line"
-         id="ksOpen"
-         x="25.463541"
-         y="60.572983"
-         style="stroke-width:0.994873">status</tspan></text>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.0;stroke-opacity:1;opacity:1"
-       id="rect126"
-       width="98%"
-       height="98%"
-       x="1%"
-       y="1%" />
-    <text
-       transform="scale(1.0087215,0.99135386)"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:13.0174px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.976308"
-       x="13.344829"
-       y="102.65318"
-       id="text1305"><tspan
-         sodipodi:role="line"
-         id="paxKumTxt"
-         x="13.344829"
-         y="102.65318"
-         style="font-size:15.6209px;stroke-width:0.976308">PAX kumuliert</tspan></text>
-    <text
-       y="153.73438"
-       x="12.859375"
-       xml:space="preserve"
-       style="font-size:16px;line-height:1.25;font-family:sans-serif"
-       id="text1309"><tspan
-         sodipodi:role="line"
-         id="paxKumVal"
-         x="12.859375"
-         y="153.73438"
-         style="font-size:32px">0000</tspan></text>
-    <text
-       y="102.15625"
-       x="139.5"
-       xml:space="preserve"
-       style="font-size:16px;line-height:1.25;font-family:sans-serif"
-       id="text1330"><tspan
-         sodipodi:role="line"
-         id="tagesauslastung"
-         x="139.5"
-         y="102.15625"
-         style="font-size:16px">Tagesverlauf</tspan></text>
-    <rect
-       y="115"
-       x="140"
-       height="55"
-       width="125"
-       id="chartBase"
-       style="fill:#d7e3f9;fill-opacity:0" />
-  </g>
-</svg>
+
 
     `;
 	
@@ -159,18 +30,17 @@ d3Script.onload = () =>
 			this._svgContainer;
 			this._tagType = "h1";
 			this._tileHeaderText = "Kontrollspur N";
-			this._paxKumValElem = this._shadowRoot.querySelector('#paxKumVal');
-			this._ksOpenElem = this._shadowRoot.querySelector('#ksOpen');
-			this._tileHeaderElem = this._shadowRoot.querySelector('#ksText');
-			this._chartElem = this._shadowRoot.querySelector('#chartBase');
-			this._tileHeaderElem.innerHTML = this._tileHeaderText;
+			//this._paxKumValElem = this._shadowRoot.querySelector('#paxKumVal');
+			//this._ksOpenElem = this._shadowRoot.querySelector('#ksOpen');
+			//this._tileHeaderElem = this._shadowRoot.querySelector('#ksText');
+			//this._chartElem = this._shadowRoot.querySelector('#chartBase');
+			//this._tileHeaderElem.innerHTML = this._tileHeaderText;
 			this._paxKumVal = '0000';
 			this._ksOpen = 'status';
 			this._widgetWidth;
 			this._widgetHeight;
-			const bcRect = this.getBoundingClientRect();
-            		this._widgetHeight = bcRect.height;
-            		this._widgetWidth = bcRect.width;
+            		this._widgetHeight = 480;
+            		this._widgetWidth = 640;
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
@@ -181,11 +51,11 @@ d3Script.onload = () =>
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
             this._firstConnection = true;
-	    const bcRect = this.getBoundingClientRect();
-            this._widgetHeight = bcRect.height;
-            this._widgetWidth = bcRect.width;
-	    console.log(this._widgetHeight);
-	    console.log(this._widgetWidth);
+	    //const bcRect = this.getBoundingClientRect();
+           // this._widgetHeight = bcRect.height;
+            //this._widgetWidth = bcRect.width;
+	    //console.log(this._widgetHeight);
+	    //console.log(this._widgetWidth);
             this.render();
 		console.log("connectedCallback");
         }
@@ -311,14 +181,14 @@ d3Script.onload = () =>
 	render(){
 
 	    	if (!this._svgContainer){
-		this._svgContainer = window._d3.select(this._chartElem)
+		this._svgContainer = window._d3.select(this._shadowRoot)
 		.append("svg:svg")
 		.attr("id", "lineChart")
 		.attr("width", this._widgetWidth)
 		.attr("height", this._widgetHeight);
 	    	} else{
-		window._d3.select(this._chartElem).selectAll("*").remove();
-		this._svgContainer = window._d3.select(this._chartElem)
+		window._d3.select(this._shadowRoot).selectAll("*").remove();
+		this._svgContainer = window._d3.select(this._shadowRoot)
 		.append("svg:svg")
 		.attr("id", "lineChart")
 		.attr("width", this._widgetWidth)
