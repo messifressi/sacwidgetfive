@@ -347,13 +347,13 @@ d3Script.onload = () =>
 		  .x(function(d) { 
 		    console.log(d.date)
 		    console.log(xScale.domain())
-		    return x(d.date)
+		    return xScale(d.date)
 		  })
 
 		  .y(function(d) { 
 		    console.log(d.value)
 		    console.log(yScale.domain())
-		    return y(d.value)
+		    return yScale(d.value)
 		  })
 
 		  xScale.domain(data.map(function(d) { 
