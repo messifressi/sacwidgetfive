@@ -323,43 +323,22 @@ d3Script.onload = () =>
 	    	}
 		console.log(this._widgetWidth);
 		
-		 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
-
-		  // When reading the csv, I must format variables:
-		  function(d){
-		    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
-		  },
-
-		  // Now I can use this dataset:
-		  function(data) {
-
-		    // Add X axis --> it is a date format
-		    var x = d3.scaleTime()
-		      .domain(d3.extent(data, function(d) { return d.date; }))
-		      .range([ 0, 70 ]);
-		    window._d3.select("#lineChart").append("g")
-		      .attr("transform", "translate(0,50)")
-		      .call(d3.axisBottom(x));
-
-		    // Add Y axis
-		    var y = d3.scaleLinear()
-		      .domain([0, d3.max(data, function(d) { return +d.value; })])
-		      .range([ 50, 0 ]);
-		    window._d3.select("#lineChart").append("g")
-		      .call(d3.axisLeft(y));
-
-		    // Add the line
-		    window._d3.select("#lineChart").append("path")
-		      .datum(data)
-		      .attr("fill", "none")
-		      .attr("stroke", "steelblue")
-		      .attr("stroke-width", 1.5)
-		      .attr("d", d3.line()
-			.x(function(d) { return x(d.date) })
-			.y(function(d) { return y(d.value) })
-			)
-
-		})
+		var data = [{date: 2021-03-24, value: 65.35},
+			    {date: 2021-03-25, value: 75.35},
+			    {date: 2021-03-26, value: 85.35},
+			    {date: 2021-03-27, value: 95.35},
+			    {date: 2021-03-28, value: 125.35}];
+		
+		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
+		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
+		
+		var guageArc = this._svgContainer.append("path")
+                .datum({endAngle: this._endAngleDeg * (pi/180), startAngle: this._startAngleDeg * (pi/180)})
+                .style("fill", this._displayedColor)
+                .attr("width", this._widgetWidth).attr("height", this._widgetWidth) // Added height and width so arc is visible
+                .attr("transform", "translate(" + this._outerRad + "," + this._outerRad + ")")
+                .attr("d", arcDef)
+                .attr( "fill-opacity", this._gaugeOpacity );
 		
 		
 		this._ksOpenElem.innerHTML = this._ksOpen;
