@@ -322,44 +322,6 @@ d3Script.onload = () =>
 		.attr("height", this._widgetHeight);
 	    	}
 		console.log(this._widgetWidth);
-		
-		var data = [{date: 2021-03-24, value: 65.35},
-			    {date: 2021-03-25, value: 75.35},
-			    {date: 2021-03-26, value: 85.35},
-			    {date: 2021-03-27, value: 95.35},
-			    {date: 2021-03-28, value: 125.35}];
-		
-		var parseTime = window._d3.timeParse("%d-%b-%y");
-		
-		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
-		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
-		
-		var valueline = d3.line()
-		    .x(function(d) { return x(d.date); })
-		    .y(function(d) { return y(d.value); });
-		
-		data.forEach(function(d) {
-		      d.date = parseTime(d.date);
-		      d.value = +d.value;
-		  });
-		
-		xScale.domain(window._d3.extent(data, function(d) { return d.date; }));
-  		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
-		
-		// Add the valueline path.
-		var appendLine = this._svgContainer.append("path")
-		      .data([data])
-		      .attr("class", "line")
-		      .attr("d", valueline);
-
-		  // Add the X Axis
-		var appendXLine = this._svgContainer.append("g")
-		      .attr("transform", "translate(0," + this._widgetHeight + ")")
-		      .call(window._d3.axisBottom(xScale));
-
-		  // Add the Y Axis
-		var appensYLine = this._svgContainer.append("g")
-		      .call(window._d3.axisLeft(yScale));
 
 		
 		this._ksOpenElem.innerHTML = this._ksOpen;
