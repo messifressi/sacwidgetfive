@@ -334,15 +334,15 @@ d3Script.onload = () =>
 		    // Add X axis --> it is a date format
 		    var x = d3.scaleTime()
 		      .domain(d3.extent(data, function(d) { return d.date; }))
-		      .range([ 0, width ]);
+		      .range([ 0, this._widgetWidth ]);
 		    svg.append("g")
-		      .attr("transform", "translate(0," + height + ")")
+		      .attr("transform", "translate(0," + this._widgetHeight + ")")
 		      .call(d3.axisBottom(x));
 
 		    // Add Y axis
 		    var y = d3.scaleLinear()
 		      .domain([0, d3.max(data, function(d) { return +d.value; })])
-		      .range([ height, 0 ]);
+		      .range([ this._widgetHeight, 0 ]);
 		    svg.append("g")
 		      .call(d3.axisLeft(y));
 
