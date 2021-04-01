@@ -335,9 +335,9 @@ d3Script.onload = () =>
 		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
 		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
 		
-		var valueline = d3.line()
-		    .x(function(d) { return x(d.date); })
-		    .y(function(d) { return y(d.value); });
+		var valueline = window._d3.line()
+		    .x(function(d) { return xScale(d.date); })
+		    .y(function(d) { return yScale(d.value); });
 		
 		data.forEach(function(d) {
 		      d.date = parseTime(d.date);
