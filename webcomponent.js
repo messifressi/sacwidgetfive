@@ -258,8 +258,8 @@ d3Script.onload = () =>
 		var appensYLine = this._svgContainer.append("g")
 		      .call(window._d3.axisLeft(yScale));
 		
-		this._ksOpenElem.innerHTML = this._ksOpen;
-		this._paxKumValElem.innerHTML = this._paxKumVal;
+		//this._ksOpenElem.innerHTML = this._ksOpen;
+		//this._paxKumValElem.innerHTML = this._paxKumVal;
 		console.log("render()");
 	}
     });
