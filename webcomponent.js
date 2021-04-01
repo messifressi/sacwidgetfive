@@ -335,7 +335,7 @@ d3Script.onload = () =>
 		var parseTime = window._d3.timeParse("%Y-%m-%d");
 		console.log("parseTime: " + parseTime(new Date(2021, 3, 4)));
 		
-		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
+		var xScale = window._d3.scaleBand().range([0, this._widgetWidth]);
 		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
 		
 		var valueline = window._d3.line()
@@ -347,8 +347,8 @@ d3Script.onload = () =>
 		      d.value = +d.value;
 		  });*/
 		
-		xScale.domain(window._d3.extent(data, function(d) { return d.date; }));
-  		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
+		xScale.domain(window._d3.extent(data.map, function(d) { return d.date; }));
+  		yScale.domain([0, window._d3.max(data.map, function(d) { return d.value; })]);
 		
 		// Add the valueline path.
 		var appendLine = this._svgContainer.append("path")
