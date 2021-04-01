@@ -169,8 +169,8 @@ d3Script.onload = () =>
 			this._widgetWidth;
 			this._widgetHeight;
 			const bcRect = this.getBoundingClientRect();
-            		this._widgetHeight = this._chartElem.height;
-            		this._widgetWidth = this._chartElem.width;
+            		this._widgetHeight = bcRect.height;
+            		this._widgetWidth = bcRect.width;
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
