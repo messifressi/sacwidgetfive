@@ -168,6 +168,9 @@ d3Script.onload = () =>
 			this._ksOpen = 'status';
 			this._widgetWidth;
 			this._widgetHeight;
+			const bcRect = this.getBoundingClientRect();
+            		this._widgetHeight = bcRect.height;
+            		this._widgetWidth = bcRect.width;
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
@@ -232,10 +235,10 @@ d3Script.onload = () =>
         //  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
         
         onCustomWidgetResize(width, height){
-	    const bcRect = this.getBoundingClientRect();
+	    /*const bcRect = this.getBoundingClientRect();
             this._widgetHeight = bcRect.height;
             this._widgetWidth = bcRect.width;
-            this.render();
+            this.render();*/
         }
         
 		getBarValue(value){
