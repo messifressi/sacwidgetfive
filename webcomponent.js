@@ -342,19 +342,41 @@ d3Script.onload = () =>
 		    .x(function(d) { return xScale(d.date); })
 		    .y(function(d) { return yScale(d.value); });
 		
+		var line = window._d3.line()
+
+		  .x(function(d) { 
+		    console.log(d.date)
+		    console.log(x.domain())
+		    return x(d.date)
+		  })
+
+		  .y(function(d) { 
+		    console.log(d.value)
+		    console.log(y.domain())
+		    return y(d.value)
+		  })
+
+		  x.domain(data.map(function(d) { 
+		    return d.date
+		  }));
+
+		  y.domain([0, window._d3.max(data, function(d) { 
+		    return d.value 
+		  })]);
+		
 		/*data.forEach(function(d) {
 		      d.date = parseTime(d.date);
 		      d.value = +d.value;
 		  });*/
 		
-		xScale.domain(window._d3.map(data, function(d) { return d.date; }));
-  		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
+		//xScale.domain(window._d3.map(data, function(d) { return d.date; }));
+  		//yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
 		
 		// Add the valueline path.
 		var appendLine = this._svgContainer.append("path")
 		      .data([data])
 		      .attr("class", "line")
-		      .attr("d", valueline);
+		      .attr("d", line);
 
 		  // Add the X Axis
 		var appendXLine = this._svgContainer.append("g")
