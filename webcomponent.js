@@ -346,13 +346,13 @@ d3Script.onload = () =>
 
 		  .x(function(d) { 
 		    console.log(d.date)
-		    console.log(x.domain())
+		    console.log(xScale.domain())
 		    return x(d.date)
 		  })
 
 		  .y(function(d) { 
 		    console.log(d.value)
-		    console.log(y.domain())
+		    console.log(yScale.domain())
 		    return y(d.value)
 		  })
 
