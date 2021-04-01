@@ -337,7 +337,7 @@ d3Script.onload = () =>
 		    var x = d3.scaleTime()
 		      .domain(d3.extent(data, function(d) { return d.date; }))
 		      .range([ 0, 70 ]);
-		    window._d3.select(this._chartElem).append("g")
+		    window._d3.select("#lineChart").append("g")
 		      .attr("transform", "translate(0,50)")
 		      .call(d3.axisBottom(x));
 
@@ -345,11 +345,11 @@ d3Script.onload = () =>
 		    var y = d3.scaleLinear()
 		      .domain([0, d3.max(data, function(d) { return +d.value; })])
 		      .range([ 50, 0 ]);
-		    window._d3.select(this._chartElem).append("g")
+		    window._d3.select("#lineChart").append("g")
 		      .call(d3.axisLeft(y));
 
 		    // Add the line
-		    window._d3.select(this._chartElem).append("path")
+		    window._d3.select("#lineChart").append("path")
 		      .datum(data)
 		      .attr("fill", "none")
 		      .attr("stroke", "steelblue")
