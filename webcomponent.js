@@ -346,7 +346,7 @@ d3Script.onload = () =>
 
 		  .x(function(d) { 
 		    console.log("Basiswert Datum: " + d.date)
-		    console.log("Skalierter Wert Datum: "xScale(d.date))
+		    console.log("Skalierter Wert Datum: " + xScale(d.date))
 		    return xScale(d.date)
 		  })
 
