@@ -166,6 +166,8 @@ d3Script.onload = () =>
 			this._tileHeaderElem.innerHTML = this._tileHeaderText;
 			this._paxKumVal = '0000';
 			this._ksOpen = 'status';
+			this._widgetWidth;
+			this._widgetHeight;
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
