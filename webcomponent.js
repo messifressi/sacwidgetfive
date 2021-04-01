@@ -333,7 +333,7 @@ d3Script.onload = () =>
 		console.log(data);
 		
 		var parseTime = window._d3.timeParse("%y-%m-%d");
-		console.log(parseTime(new Date("2021-03-27")));
+		console.log("parseTime: " + parseTime(new Date(2021, 3, 4)));
 		
 		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
 		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
