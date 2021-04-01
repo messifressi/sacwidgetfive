@@ -37,8 +37,6 @@ d3Script.onload = () =>
 			//this._tileHeaderElem.innerHTML = this._tileHeaderText;
 			this._paxKumVal = '0000';
 			this._ksOpen = 'status';
-			this._widgetWidth;
-			this._widgetHeight;
             		this._widgetHeight = 480;
             		this._widgetWidth = 640;
 			
@@ -81,7 +79,7 @@ d3Script.onload = () =>
 			 if ("tileHeaderText" in changedProperties) {
 				this._tileHeaderText = changedProperties["tileHeaderText"];
 				 console.log(this._tileHeaderText);
-				 this._tileHeaderElem.innerHTML = this._tileHeaderText;
+				 //this._tileHeaderElem.innerHTML = this._tileHeaderText;
 				 
 			}
            		 if ("ksOpen" in changedProperties) {
@@ -209,7 +207,7 @@ d3Script.onload = () =>
 		//console.log("parseTime: " + parseTime(new Date(2021, 3, 4)));
 		
 		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
-		var yScale = window._d3.scaleLinear().rangeRound([this._widgetHeight, 0]);
+		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
 		
 		/*var valueline = window._d3.line()
 		    .x(function(d) { return xScale(d.date); })
