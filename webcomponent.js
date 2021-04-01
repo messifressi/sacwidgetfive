@@ -306,9 +306,6 @@ d3Script.onload = () =>
         }
 			
 	render(){
-		if (this._widgetHeight < this._widgetWidth){
-                	this._widgetWidth = this._widgetHeight;
-		}
 
 	    	if (!this._svgContainer){
 		this._svgContainer = window._d3.select(this._chartElem)
@@ -324,6 +321,7 @@ d3Script.onload = () =>
 		.attr("width", this._widgetWidth)
 		.attr("height", this._widgetHeight);
 	    	}
+		console.log(this._widgetWidth);
 		
 		 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
 
@@ -338,15 +336,15 @@ d3Script.onload = () =>
 		    // Add X axis --> it is a date format
 		    var x = d3.scaleTime()
 		      .domain(d3.extent(data, function(d) { return d.date; }))
-		      .range([ 0, this._widgetWidth ]);
+		      .range([ 0, 70 ]);
 		    svg.append("g")
-		      .attr("transform", "translate(0," + this._widgetHeight + ")")
+		      .attr("transform", "translate(0," + 50 + ")")
 		      .call(d3.axisBottom(x));
 
 		    // Add Y axis
 		    var y = d3.scaleLinear()
 		      .domain([0, d3.max(data, function(d) { return +d.value; })])
-		      .range([ this._widgetHeight, 0 ]);
+		      .range([ 50, 0 ]);
 		    svg.append("g")
 		      .call(d3.axisLeft(y));
 
