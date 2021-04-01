@@ -347,8 +347,8 @@ d3Script.onload = () =>
 		      d.value = +d.value;
 		  });*/
 		
-		xScale.domain(window._d3.extent(data.map, function(d) { return d.date; }));
-  		yScale.domain([0, window._d3.max(data.map, function(d) { return d.value; })]);
+		xScale.domain(window._d3.map(data, function(d) { return d.date; }));
+  		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
 		
 		// Add the valueline path.
 		var appendLine = this._svgContainer.append("path")
