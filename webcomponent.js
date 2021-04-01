@@ -324,23 +324,23 @@ d3Script.onload = () =>
 		console.log(this._widgetWidth);
 
 
-		var data = [{"date": "2021-03-24", "value": parseFloat('65.35')},
-			   {"date": "2021-03-25", "value": parseFloat('75.35')},
-			   {"date": "2021-03-26", "value": parseFloat('85.35')},
-			   {"date": "2021-03-27", "value": parseFloat('95.35')},
-			   {"date": "2021-03-28", "value": parseFloat('115.35')}];
+		var data = [{"date": new Date("2021-03-24"), "value": parseFloat('65.35')},
+			   {"date": new Date("2021-03-25"), "value": parseFloat('75.35')},
+			   {"date": new Date("2021-03-26"), "value": parseFloat('85.35')},
+			   {"date": new Date("2021-03-27"), "value": parseFloat('95.35')},
+			   {"date": new Date("2021-03-28"), "value": parseFloat('115.35')}];
 		
 		console.log(data);
 		
-		var parseTime = window._d3.timeParse("%Y-%m-%d");
-		console.log("parseTime: " + parseTime(new Date(2021, 3, 4)));
+		//var parseTime = window._d3.timeParse("%Y-%m-%d");
+		//console.log("parseTime: " + parseTime(new Date(2021, 3, 4)));
 		
-		var xScale = window._d3.scaleBand().range([0, this._widgetWidth]);
-		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
+		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
+		var yScale = window._d3.scaleLinear().rangeRound([this._widgetHeight, 0]);
 		
-		var valueline = window._d3.line()
+		/*var valueline = window._d3.line()
 		    .x(function(d) { return xScale(d.date); })
-		    .y(function(d) { return yScale(d.value); });
+		    .y(function(d) { return yScale(d.value); });*/
 		
 		var line = window._d3.line()
 
