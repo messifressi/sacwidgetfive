@@ -347,6 +347,21 @@ d3Script.onload = () =>
 		xScale.domain(window._d3.extent(data, function(d) { return d.date; }));
   		yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
 		
+		// Add the valueline path.
+		var appendLine = this._svgContainer.append("path")
+		      .data([data])
+		      .attr("class", "line")
+		      .attr("d", valueline);
+
+		  // Add the X Axis
+		var appendXLine = this._svgContainer.append("g")
+		      .attr("transform", "translate(0," + this._widgetHeight + ")")
+		      .call(window._d3.axisBottom(xScale));
+
+		  // Add the Y Axis
+		var appensYLine = this._svgContainer.append("g")
+		      .call(window._d3.axisLeft(yScale));
+		
 		this._ksOpenElem.innerHTML = this._ksOpen;
 		this._paxKumValElem.innerHTML = this._paxKumVal;
 		console.log("render()");
