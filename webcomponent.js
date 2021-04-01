@@ -324,11 +324,11 @@ d3Script.onload = () =>
 		console.log(this._widgetWidth);
 
 
-		var data = [{date: '2021-03-24', value: '65.35'},
-			    {date: '2021-03-25', value: '75.35'},
-			    {date: '2021-03-26', value: '85.35'},
-			    {date: '2021-03-27', value: '95.35'},
-			    {date: '2021-03-28', value: '125.35'}];
+		var data = [{date: 2021-03-24, value: 65.35},
+			    {date: 2021-03-25, value: 75.35},
+			    {date: 2021-03-26, value: 85.35},
+			    {date: 2021-03-27, value: 95.35},
+			    {date: 2021-03-28, value: 125.35}];
 		
 		var parseTime = window._d3.timeParse("%d-%b-%y");
 		
