@@ -134,7 +134,7 @@
        height="55"
        width="125"
        id="chartBase"
-       style="fill:#d7e3f9;fill-opacity:1" />
+       style="fill:#d7e3f9;fill-opacity:0" />
   </g>
 </svg>
 
@@ -169,8 +169,8 @@ d3Script.onload = () =>
 			this._widgetWidth;
 			this._widgetHeight;
 			const bcRect = this.getBoundingClientRect();
-            		this._widgetHeight = bcRect.height;
-            		this._widgetWidth = bcRect.width;
+            		this._widgetHeight = this._chartElem.height;
+            		this._widgetWidth = this._chartElem.width;
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
