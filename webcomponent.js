@@ -345,14 +345,14 @@ d3Script.onload = () =>
 		var line = window._d3.line()
 
 		  .x(function(d) { 
-		    console.log(d.date)
-		    console.log(xScale.domain())
+		    console.log("Basiswert Datum: " + d.date)
+		    console.log("Skalierter Wert Datum: "xScale(d.date))
 		    return xScale(d.date)
 		  })
 
 		  .y(function(d) { 
-		    console.log(d.value)
-		    console.log(yScale.domain())
+		    console.log("Basiswert Wert: " + d.value)
+		    console.log("Skalierter Wert Wert: " + yScale(d.value))
 		    return yScale(d.value)
 		  })
 
