@@ -331,6 +331,8 @@ d3Script.onload = () =>
 			    {date: 2021-03-28, value: 125.35}];
 		
 		console.log(data);
+		
+		var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York", "date": 2020-03-04}');
 		/*
 		var parseTime = window._d3.timeParse("%d-%b-%y");
 		
