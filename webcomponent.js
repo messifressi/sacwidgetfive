@@ -356,11 +356,11 @@ d3Script.onload = () =>
 		    return y(d.value)
 		  })
 
-		  x.domain(data.map(function(d) { 
+		  xScale.domain(data.map(function(d) { 
 		    return d.date
 		  }));
 
-		  y.domain([0, window._d3.max(data, function(d) { 
+		  yScale.domain([0, window._d3.max(data, function(d) { 
 		    return d.value 
 		  })]);
 		
