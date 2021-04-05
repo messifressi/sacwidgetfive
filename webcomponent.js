@@ -177,86 +177,115 @@ d3Script.onload = () =>
         }
 			
 	render(){
+		
+		var w = 400;
+		var h = 250;
+
+		var margin = {
+		  top: 20,
+		  bottom: 20,
+		  left: 40,
+		  right: 20
+		}
 
 	    	if (!this._svgContainer){
 		this._svgContainer = window._d3.select(this._shadowRoot)
 		.append("svg:svg")
 		.attr("id", "lineChart")
-		.attr("width", this._widgetWidth)
-		.attr("height", this._widgetHeight);
+		.attr("width", w)
+		.attr("height", h);
 	    	} else{
 		window._d3.select(this._shadowRoot).selectAll("*").remove();
 		this._svgContainer = window._d3.select(this._shadowRoot)
 		.append("svg:svg")
 		.attr("id", "lineChart")
-		.attr("width", this._widgetWidth)
-		.attr("height", this._widgetHeight);
+		.attr("width", w)
+		.attr("height", h);
 	    	}
 		console.log(this._widgetWidth);
 
 
-		var data = [{"date": new Date("2021-03-24"), "value": parseFloat('65.35')},
-			   {"date": new Date("2021-03-25"), "value": parseFloat('75.35')},
-			   {"date": new Date("2021-03-26"), "value": parseFloat('85.35')},
-			   {"date": new Date("2021-03-27"), "value": parseFloat('95.35')},
-			   {"date": new Date("2021-03-28"), "value": parseFloat('115.35')}];
+		var data = [
+	{"date": "Jan","value": 1507},
+	{"date": "Feb","value": 1600},
+	{"date": "Mar","value": 1281},
+	{"date": "Apr","value": 1898},
+	{"date": "May","value": 1749},
+	{"date": "June","value": 1270},
+	{"date": "July","value": 1712},
+	{"date": "Aug","value": 1270},
+	{"date": "Sept","value": 1257},
+	{"date": "Oct","value": 1257},
+	{"date": "Nov","value": 1257},
+	{"date": "Dec","value": 1257}];
 		
 		console.log(data);
 		
-		//var parseTime = window._d3.timeParse("%Y-%m-%d");
-		//console.log("parseTime: " + parseTime(new Date(2021, 3, 4)));
-		
-		var xScale = window._d3.scaleTime().range([0, this._widgetWidth]);
-		var yScale = window._d3.scaleLinear().range([this._widgetHeight, 0]);
-		
-		/*var valueline = window._d3.line()
-		    .x(function(d) { return xScale(d.date); })
-		    .y(function(d) { return yScale(d.value); });*/
-		
-		var line = window._d3.line()
+		///////////////////////////// Create SVG
 
-		  .x(function(d) { 
-		    console.log("Basiswert Datum: " + d.date)
-		    console.log("Skalierter Wert Datum: " + xScale(d.date))
-		    return xScale(d.date)
-		  })
 
-		  .y(function(d) { 
-		    console.log("Basiswert Wert: " + d.value)
-		    console.log("Skalierter Wert Wert: " + yScale(d.value))
-		    return yScale(d.value)
-		  })
 
-		  xScale.domain(data.map(function(d) { 
-		    return d.date
-		  }));
+var width = w - margin.left - margin.right
+var height = h - margin.top - margin.bottom
 
-		  yScale.domain([0, window._d3.max(data, function(d) { 
-		    return d.value 
-		  })]);
-		
-		/*data.forEach(function(d) {
-		      d.date = parseTime(d.date);
-		      d.value = +d.value;
-		  });*/
-		
-		//xScale.domain(window._d3.map(data, function(d) { return d.date; }));
-  		//yScale.domain([0, window._d3.max(data, function(d) { return d.value; })]);
-		
-		// Add the valueline path.
-		var appendLine = this._svgContainer.append("path")
-		      .data([data])
-		      .attr("class", "line")
-		      .attr("d", line);
 
-		  // Add the X Axis
-		var appendXLine = this._svgContainer.append("g")
-		      .attr("transform", "translate(0," + this._widgetHeight + ")")
-		      .call(window._d3.axisBottom(xScale));
+var chart = this._svgContainer.append('g')
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");  
 
-		  // Add the Y Axis
-		var appensYLine = this._svgContainer.append("g")
-		      .call(window._d3.axisLeft(yScale));
+///////////////////////////// Create Scale  
+
+var x = window._d3.scaleBand()
+  .range([0, width])
+  
+
+var y = window._d3.scaleLinear()
+  .rangeRound([height, 0])
+
+
+///////////////////////////// Create Line
+
+var line = window._d3.line()
+
+  .x(function(d) { 
+    console.log(d.date)
+    console.log(x.domain())
+    return x(d.date)
+  })
+
+  .y(function(d) { 
+    console.log(d.value)
+    console.log(y.domain())
+    return y(d.value)
+  })
+
+  x.domain(data.map(function(d) { 
+    return d.date
+  }));
+
+  y.domain([0, window._d3.max(data, function(d) { 
+    return d.value 
+  })]);
+
+chart.append("path")
+  .datum(data)
+  .attr("fill", "none")
+  .attr("stroke", "steelblue")
+  .attr("stroke-linejoin", "round")
+  .attr("stroke-linecap", "round")
+  .attr("stroke-width", 1.5)
+  .attr("d", line);
+
+
+///////////////////////////// Create Axis
+  
+var xAxis = chart.append('g')
+  .classed('x-axis', true)
+  .attr("transform", "translate(0," + height + ")")
+  .call(window._d3.axisBottom(x))
+
+var yAxis = chart.append('g')
+  .classed('y-axis', true)
+  .call(window._d3.axisLeft(y))  
 		
 		//this._ksOpenElem.innerHTML = this._ksOpen;
 		//this._paxKumValElem.innerHTML = this._paxKumVal;
